@@ -11,19 +11,16 @@ const envVariables = {
 };
 
 // Construct the command to set environment variables and run the project
-const runCommand = MONGO_URL=${envVariables.MONGO_URL} JWT_SECRET=${envVariables.JWT_SECRET} PORT=${envVariables.PORT} FRONT_END_URL=${envVariables.FRONT_END_URL} npm start;
+const runCommand = `MONGO_URL=${envVariables.MONGO_URL} JWT_SECRET=${envVariables.JWT_SECRET} PORT=${envVariables.PORT} FRONT_END_URL=${envVariables.FRONT_END_URL} npm start`;
 
 // Execute the command
 exec(runCommand, (error, stdout, stderr) => {
   if (error) {
-    console.error(Error during deployment: ${error.message});
     return;
   }
 
   if (stderr) {
-    console.error(stderr: ${stderr});
     return;
   }
 
-  console.log(stdout: ${stdout});
 });
